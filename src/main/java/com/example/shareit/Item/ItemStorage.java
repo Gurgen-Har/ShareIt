@@ -10,6 +10,6 @@ public interface ItemStorage {
 
     List<Item> getItemsBySearchQuery(String text);
 
-    void deleteItemsByOwner(Long ownderId);
+    void deleteItemsByOwner(Long ownerId);
     public Item getItemById(Long id);
 }
