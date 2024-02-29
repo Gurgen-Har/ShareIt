@@ -16,10 +16,10 @@ public class ItemMapper {
     public Item toItem(ItemDto itemDto, Long ownerId) {
         return new Item(
                 itemDto.getId(),
+                ownerId,
                 itemDto.getName(),
                 itemDto.getDescription(),
                 itemDto.getStatus(),
-                ownerId,
                 itemDto.getRequestId() != null ? itemDto.getRequestId() : null
         );
     }
