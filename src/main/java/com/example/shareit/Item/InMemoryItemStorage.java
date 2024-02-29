@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component("inMemoryItemStorage")
 public class InMemoryItemStorage implements ItemStorage{
-    private Map<Long, Item> items;
+    private final Map<Long, Item> items;
     private Long currentId;
 
     public InMemoryItemStorage() {
