@@ -1,7 +1,9 @@
 package com.example.shareit.Item;
 
 import com.example.shareit.Item.DTO.ItemDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ItemMapper {
     public ItemDto toItemDto(Item item) {
         return new ItemDto(

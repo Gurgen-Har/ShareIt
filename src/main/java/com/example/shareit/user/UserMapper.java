@@ -1,7 +1,9 @@
 package com.example.shareit.user;
 
 import com.example.shareit.user.DTO.UserDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
     public UserDto toUserDto(User user) {
         return new UserDto(
