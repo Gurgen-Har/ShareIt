@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 @Component
 public class ItemService {
-    ItemMapper itemMapper;
-    ItemStorage itemStorage;
+    private final ItemMapper itemMapper;
+    private final ItemStorage itemStorage;
     @Autowired
     public ItemService(@Qualifier("inMemoryItemStorage") ItemStorage itemStorage, ItemMapper itemMapper) {
         this.itemStorage = itemStorage;
@@ -54,5 +54,8 @@ public class ItemService {
         return itemStorage.getItemsBySearchQuery(text).stream()
                 .map(itemMapper::toItemDto)
                 .collect(Collectors.toList());
+    }
+    public ItemDto getItemsById(Long id) {
+        return itemMapper.toItemDto(itemStorage.getItemById(id));
     }
 }
