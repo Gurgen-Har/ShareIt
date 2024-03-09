@@ -12,36 +12,36 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/users")
 public class UserController {
-    UserService userService;
+    UserServiceImpl userServiceImpl;
 
     @Autowired
-    public UserController(UserService userService){
-        this.userService = userService;
+    public UserController(UserServiceImpl userServiceImpl){
+        this.userServiceImpl = userServiceImpl;
     }
     @GetMapping
     public List<UserDto> getUsers(){
-        return userService.getUsers();
+        return userServiceImpl.getUsers();
     }
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+        return userServiceImpl.getUserById(id);
     }
 
     @ResponseBody
     @PostMapping
     public UserDto createUser(@Valid @RequestBody UserDto userDto) {
-        return userService.create(userDto);
+        return userServiceImpl.create(userDto);
     }
 
     @ResponseBody
     @PatchMapping("/{id}")
     public UserDto updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Long id ) {
-        return userService.update(userDto, id);
+        return userServiceImpl.update(userDto, id);
     }
 
     @DeleteMapping("/{id}")
     public UserDto deleteUser(@PathVariable Long id){
-        return userService.delete(id);
+        return userServiceImpl.delete(id);
     }
 
 

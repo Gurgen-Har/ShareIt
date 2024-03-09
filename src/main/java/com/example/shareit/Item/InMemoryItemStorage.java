@@ -53,8 +53,8 @@ public class InMemoryItemStorage implements ItemStorage{
         if (item.getDescription() == null) {
             item.setDescription(items.get(item.getId()).getDescription());
         }
-        if (item.getStatus() == null) {
-            item.setStatus(items.get(item.getId()).getStatus());
+        if (item.getAvailable() == null) {
+            item.setAvailable(items.get(item.getId()).getAvailable());
         }
         if (isValidItem(item)) {
             items.put(item.getId(), item);
@@ -74,7 +74,7 @@ public class InMemoryItemStorage implements ItemStorage{
         List<Item> searchItems = new ArrayList<>();
         if (!text.isBlank()) {
             searchItems = items.values().stream()
-                    .filter(Item::getStatus)
+                    .filter(Item::getAvailable)
                     .filter(item -> item.getName().toLowerCase().contains(text) || item.getDescription().toLowerCase().contains(text))
                     .collect(Collectors.toList());
         }
@@ -109,7 +109,7 @@ public class InMemoryItemStorage implements ItemStorage{
     }
 
     private boolean isValidItem(Item item) {
-        if (item.getName().isEmpty() || item.getDescription().isEmpty() || item.getStatus() == null) {
+        if (item.getName().isEmpty() || item.getDescription().isEmpty() || item.getAvailable() == null) {
             throw new ValidationException("У вещи некорректные данные");
         }
         return true;
