@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -21,9 +22,9 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "start_date")
-    private LocalDate start;
+    private LocalDateTime start;
     @Column(name = "end_date")
-    private LocalDate end;
+    private LocalDateTime end;
     @ManyToOne
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item item;

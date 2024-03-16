@@ -70,7 +70,7 @@ public class ItemServiceImpl implements ItemService {
         if (itemDto.getDescription() != null) {
             item.setDescription(itemDto.getDescription());
         }
-        return itemMapper.toItemDto(itemRepository.save(item );
+        return itemMapper.toItemDto(itemRepository.save(item ));
     }
 
     @Override
@@ -111,8 +111,10 @@ public class ItemServiceImpl implements ItemService {
         userRepository.findById(ownerId)
                 .orElseThrow(() -> new UserNotFoundException("Пользователь с ID = " + ownerId + "не найден"));
         if (ownerId.equals(item.getOwner().getId())) {
-            itemDto = itemMapper.
+            itemDto = itemMapper.toItemExtDto(item);
+        } else {
+            itemDto = itemMapper.toItemDto(item);
         }
-        return itemMapper.toItemDto(itemRepository.getItemById(id));
+        return itemDto;
     }
 }
